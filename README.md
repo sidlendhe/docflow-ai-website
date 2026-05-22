@@ -38,7 +38,7 @@ Fill in `.env.local`:
 ```env
 RESEND_API_KEY=re_your_api_key_here
 CONTACT_EMAIL=sid@docflowai.com.au
-NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-username/10min
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/siddhesh-automate/30min
 ```
 
 **Resend:** Get a free API key at [resend.com](https://resend.com). Add `docflowai.com.au` as a verified sending domain.

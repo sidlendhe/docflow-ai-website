@@ -30,10 +30,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const toEmail = process.env.CONTACT_EMAIL || "sid@docflowai.com.au";
+    const toEmail = process.env.CONTACT_EMAIL || "siddhesh.automate@gmail.com";
 
     await resend.emails.send({
-      from: "DocFlow AI Contact <noreply@docflowai.com.au>",
+      from: process.env.RESEND_FROM_EMAIL || "DocFlow AI Contact <onboarding@resend.dev>",
       to: [toEmail],
       replyTo: email,
       subject: `New enquiry from ${name} — ${company}`,
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation to the enquirer
     await resend.emails.send({
-      from: "Siddhesh at DocFlow AI <sid@docflowai.com.au>",
+      from: process.env.RESEND_FROM_EMAIL || "DocFlow AI <onboarding@resend.dev>",
       to: [email],
       subject: "Got your message — I'll be in touch soon",
       html: `
