@@ -41,6 +41,11 @@ export const metadata: Metadata = {
     siteName: "DocFlow AI",
     locale: "en_AU",
     type: "website",
+    images: [{ url: "/logo.png", width: 1200, height: 330, alt: "DocFlow AI" }],
+  },
+  icons: {
+    icon: "/logo-icon.png",
+    apple: "/logo-icon.png",
   },
   metadataBase: new URL("https://docflowai.com.au"),
 };

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Zap, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   product: [
@@ -21,20 +22,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: "var(--cyan)" }}
-              >
-                <Zap className="w-5 h-5" style={{ color: "var(--navy)" }} fill="currentColor" />
-              </div>
-              <span
-                className="font-bold text-xl tracking-tight"
-                style={{ fontFamily: "var(--font-sora)" }}
-              >
-                DocFlow{" "}
-                <span style={{ color: "var(--cyan)" }}>AI</span>
-              </span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/logo.png"
+                alt="DocFlow AI"
+                width={160}
+                height={44}
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
               AI-powered document extraction for Australian accounting firms,

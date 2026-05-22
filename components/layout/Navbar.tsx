@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -44,17 +45,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-cyan flex items-center justify-center">
-                <Zap className="w-5 h-5 text-navy" fill="currentColor" />
-              </div>
-              <span
-                className="font-sora font-bold text-xl text-white tracking-tight"
-                style={{ fontFamily: "var(--font-sora)" }}
-              >
-                DocFlow{" "}
-                <span style={{ color: "var(--cyan)" }}>AI</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="DocFlow AI"
+                width={160}
+                height={44}
+                className="h-9 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}
@@ -132,7 +131,7 @@ export default function Navbar() {
             >
               <div className="px-4 py-4 flex flex-col gap-1">
                 {navLinks.map((link) => (
-                  <Link
+                <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
@@ -149,11 +148,11 @@ export default function Navbar() {
                   >
                     {link.label}
                   </Link>
-                ))}
+              ))}
                 <a
                   href="/contact"
-                  className="mt-2 px-4 py-3 rounded-lg font-semibold text-center text-navy"
-                  style={{ backgroundColor: "var(--cyan)" }}
+                  className="mt-2 px-4 py-3 rounded-lg font-semibold text-center"
+                  style={{ backgroundColor: "var(--cyan)", color: "var(--navy)" }}
                 >
                   Book a Free Call
                 </a>
