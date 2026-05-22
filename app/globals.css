@@ -1,26 +1,258 @@
 @import "tailwindcss";
 
+@theme {
+  --color-navy: #0a1628;
+  --color-navy-mid: #0f2557;
+  --color-navy-light: #1a3a6b;
+  --color-cyan: #00c2cb;
+  --color-cyan-dark: #009ea6;
+  --color-cyan-light: #e0fafa;
+  --color-slate-custom: #64748b;
+  --color-off-white: #f6f9fc;
+
+  --font-sora: "Sora", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* ── Root variables ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0a1628;
+  --navy-mid: #0f2557;
+  --navy-light: #1a3a6b;
+  --cyan: #00c2cb;
+  --cyan-dark: #009ea6;
+  --cyan-light: #e0fafa;
+  --off-white: #f6f9fc;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Global reset & base styles ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a2e;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ── Typography ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ── Fluid heading scale ── */
+.display-xl {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.5rem);
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* ── Gradient text (cyan) ── */
+.gradient-text {
+  background: linear-gradient(135deg, #00c2cb 0%, #7dd3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Diagonal section divider ── */
+.section-diagonal-top {
+  clip-path: polygon(0 4%, 100% 0%, 100% 100%, 0% 100%);
+  margin-top: -2rem;
+  padding-top: 3rem;
+}
+
+.section-diagonal-bottom {
+  clip-path: polygon(0 0%, 100% 0%, 100% 96%, 0% 100%);
+  padding-bottom: 3rem;
+}
+
+/* ── Scrolling marquee ── */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Floating animation (hero image) ── */
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.float-animation {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* ── Dot grid background ── */
+.dot-grid-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 194, 203, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+/* ── Pulsing node (flow diagram) ── */
+@keyframes pulse-node {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 194, 203, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 194, 203, 0);
+    transform: scale(1.05);
+  }
+}
+
+.pulse-node {
+  animation: pulse-node 2.5s ease-in-out infinite;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00c2cb;
+  border-radius: 3px;
+}
+
+/* ── Focus styles ── */
+:focus-visible {
+  outline: 2px solid #00c2cb;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Section number decorative ── */
+.section-number {
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-size: 8rem;
+  font-weight: 800;
+  color: rgba(0, 194, 203, 0.08);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Left-accent card border ── */
+.card-accent {
+  border-left: 4px solid #00c2cb;
+  background: #ffffff;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+/* ── Glass nav ── */
+.nav-glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 22, 40, 0.92);
+  border-bottom: 1px solid rgba(0, 194, 203, 0.1);
+}
+
+/* ── Prose styles for guide content ── */
+.prose-guide h3 {
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy-mid);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-guide p {
+  color: #475569;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.prose-guide ol {
+  counter-reset: item;
+  padding-left: 0;
+}
+
+.prose-guide ol li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  color: #475569;
+  align-items: flex-start;
+}
+
+.prose-guide ol li::before {
+  content: counter(item) ".";
+  counter-increment: item;
+  font-weight: 600;
+  color: var(--cyan);
+  min-width: 1.5rem;
+  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+}
+
+/* ── Transition utility ── */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
