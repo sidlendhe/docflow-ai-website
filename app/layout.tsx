@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     "document extraction AI",
   ],
   authors: [{ name: "DocFlow AI" }],
+  verification: {
+    google: "_0xXayHHIK1j_cE79yjTiZUpq16QbgVXWqTRBKvAkqM",
+  },
   openGraph: {
     title: "DocFlow AI — AI Document Extraction for Australian Accounting Firms",
     description:
