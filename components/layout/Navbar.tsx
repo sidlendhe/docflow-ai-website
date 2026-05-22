@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import DocFlowLogo from "@/components/ui/DocFlowLogo";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -46,14 +46,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="DocFlow AI"
-                width={160}
-                height={44}
-                className="h-9 w-auto"
-                priority
-              />
+              <DocFlowLogo size={38} />
             </Link>
 
             {/* Desktop nav */}

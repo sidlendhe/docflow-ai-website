@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import DocFlowLogo from "@/components/ui/DocFlowLogo";
 import { Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
@@ -23,13 +23,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-4">
-              <Image
-                src="/logo.png"
-                alt="DocFlow AI"
-                width={160}
-                height={44}
-                className="h-9 w-auto"
-              />
+              <DocFlowLogo size={34} />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
               AI-powered document extraction for Australian accounting firms,
